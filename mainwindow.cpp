@@ -1,9 +1,9 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include <QDebug>
 #include <memory>
 #include "Areas.h"
 #include "DeliveryEnums.h"
+#include "ui_mainwindow.h"
 
 static std::vector<std::shared_ptr<IValuable>> area;
 
