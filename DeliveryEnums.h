@@ -8,4 +8,14 @@ enum class Transport
   Air
 };
 
+enum class Continent
+{
+  Asia = 0,
+  Europe,
+  NorthAmerica,
+  SouthAmerica,
+  Africa,
+  Australia
+};
+
 #endif  // DELIVERYENUMS_H
