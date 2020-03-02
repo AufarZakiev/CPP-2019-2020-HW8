@@ -3,6 +3,7 @@
 #include "QString"
 #include "continent.h"
 #include "transport.h"
+#include "freight.h"
 
 class Price
 {
@@ -13,18 +14,15 @@ protected:
   int price_;
 };
 
-class Delivery : public Price
+class Delivery : public Price, public Freight
 {
   Continent from_;
   Continent to_;
-  Transport transport_;
 
 public:
   void setFrom(Continent from);
   void setTo(Continent to);
-  void setTransport(Transport transport);
   int getPice();
-  QString freight();
 };
 
 #endif  // DELIVERY_H

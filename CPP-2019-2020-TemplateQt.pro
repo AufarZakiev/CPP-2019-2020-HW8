@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     delivery.cpp \
+    freight.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     continent.h \
     delivery.h \
+    freight.h \
     mainwindow.h \
     transport.h
 
