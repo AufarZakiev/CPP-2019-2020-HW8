@@ -11,7 +11,7 @@ void Delivery::setTo(Continent to)
   to_ = to;
 }
 
-int Delivery::getPice()
+int Delivery::getPrice()
 {
   if (from_ == to_)
     price_ = 0;
@@ -20,7 +20,7 @@ int Delivery::getPice()
   return price_;
 }
 
-int Price::getPice()
+int Price::getPrice()
 {
   return price_;
 }

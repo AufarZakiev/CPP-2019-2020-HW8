@@ -8,7 +8,7 @@
 class Price
 {
 public:
-  virtual int getPice();
+  virtual int getPrice();
 
 protected:
   int price_;
@@ -22,7 +22,7 @@ class Delivery : public Price, public Freight
 public:
   void setFrom(Continent from);
   void setTo(Continent to);
-  int getPice();
+  int getPrice();
 };
 
 #endif  // DELIVERY_H

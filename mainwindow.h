@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
+#include "delivery.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -16,13 +17,10 @@ class MainWindow : public QMainWindow
 public:
   MainWindow(QWidget* parent = nullptr);
   ~MainWindow();
+  Delivery delivery;
 
 private slots:
   void on_calculatePushButton_clicked();
-
-  void on_fromComboBox_currentIndexChanged(const QString& arg1);
-
-  void on_fromComboBox_currentIndexChanged(int index);
 
   void on_freightPushButton_clicked();
 

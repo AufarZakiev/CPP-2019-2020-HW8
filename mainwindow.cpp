@@ -13,25 +13,13 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
-static Delivery delivery;
-
 void MainWindow::on_calculatePushButton_clicked()
 {
   delivery.setFrom(Continent(ui->fromComboBox->currentIndex()));
   delivery.setTo(Continent(ui->toComboBox->currentIndex()));
   delivery.setTransport(Transport(ui->transportComboBox->currentIndex()));
 
-  ui->priceLabel->setNum(delivery.getPice());
-}
-
-void MainWindow::on_fromComboBox_currentIndexChanged(const QString& arg1)
-{
-  qDebug() << &arg1;
-}
-
-void MainWindow::on_fromComboBox_currentIndexChanged(int index)
-{
-  qDebug() << index;
+  ui->priceLabel->setNum(delivery.getPrice());
 }
 
 void MainWindow::on_freightPushButton_clicked()
