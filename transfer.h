@@ -17,7 +17,7 @@ public:
   {
     trs = transport::TransportSetter();
     rgs = region::RegionSetter();
-  };
+  }
   ~Transfer()
   {
     delete from;
