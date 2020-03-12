@@ -6,15 +6,241 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>653</width>
+    <height>306</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="FromLabel">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>From:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="TransportLabel">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Transport</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="ToLabel">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>To:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QComboBox" name="FromComboBox">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Asia</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Europe</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>North America</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>South America</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Africa</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Australia</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="TransportComboBox">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Air</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sea</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ground</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="ToComboBox">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Asia</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Europe</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>North America</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>South America</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Africa</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Australia</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="CalcPushButton">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Calculate price</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="PriceLabel">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Price:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="PriceShowLabel">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QPushButton" name="FreightPushButton">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Freight!</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="FreightShowLabel">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>653</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
