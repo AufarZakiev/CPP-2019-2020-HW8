@@ -15,10 +15,22 @@ enum Transports
 class Transport
 {
 public:
-  virtual QString getName() = 0;
-  virtual int calculatePrice(region::Region* from, region::Region* to) = 0;
+  virtual QString getName()
+  {
+    return "-";
+  }
+  virtual int calculatePrice(region::Region& from, region::Region& to)
+  {
+    qDebug() << this->getName() << " " << from.getName() << " " << to.getName();
+    return -1;
+  }
   virtual ~Transport()
   {
+  }
+
+  virtual bool isValid()
+  {
+    return false;
   }
 };
 
@@ -29,11 +41,17 @@ public:
   {
     return QString::fromStdString("Sea");
   }
-  virtual int calculatePrice(region::Region* from, region::Region* to)
+  virtual int calculatePrice(region::Region& from, region::Region& to)
   {
-    return (from->getRegionRadius() + to->getRegionRadius()) * 2;
+    qDebug() << this->getName() << " " << from.getName() << " " << to.getName();
+    return (from.getRegionRadius() + to.getRegionRadius()) * 2;
   }
   ~Sea() = default;
+
+  virtual bool isValid()
+  {
+    return true;
+  }
 };
 class Ground : public Transport
 {
@@ -42,11 +60,17 @@ public:
   {
     return QString::fromStdString("Ground");
   }
-  virtual int calculatePrice(region::Region* from, region::Region* to)
+  virtual int calculatePrice(region::Region& from, region::Region& to)
   {
-    return (from->getRegionRadius() + to->getRegionRadius()) * 3;
+    qDebug() << this->getName() << " " << from.getName() << " " << to.getName();
+    return (from.getRegionRadius() + to.getRegionRadius()) * 3;
   }
   ~Ground() = default;
+
+  virtual bool isValid()
+  {
+    return true;
+  }
 };
 class Air : public Transport
 {
@@ -55,40 +79,45 @@ public:
   {
     return QString::fromStdString("Air");
   }
-  virtual int calculatePrice(region::Region* from, region::Region* to)
+  virtual int calculatePrice(region::Region& from, region::Region& to)
   {
-    return (from->getRegionRadius() + to->getRegionRadius()) * 4;
+    qDebug() << this->getName() << " " << from.getName() << " " << to.getName();
+    return (from.getRegionRadius() + to.getRegionRadius()) * 4;
   }
   ~Air() = default;
+
+  virtual bool isValid()
+  {
+    return true;
+  }
 };
 
 class TransportSetter
 {
-  Transport* transports[4];
+  Transport transports[4];
 
 public:
   TransportSetter()
   {
-    transports[Transports::NULL_] = nullptr;
-    transports[Transports::AIR] = new Air();
-    transports[Transports::SEA] = new Sea();
-    transports[Transports::GROUND] = new Ground();
+    // not needed, but i'll leave it here just to be shuer i
+    // didn't forget aboun "NULL"-value
+
+    // transports[Transports::NULL_] = Transport();
+    transports[Transports::AIR] = Air();
+    transports[Transports::SEA] = Sea();
+    transports[Transports::GROUND] = Ground();
   }
 
   ~TransportSetter()
   {
-    for (int i = 0; i < 4; i++)
-    {
-      delete transports[i];
-    }
   }
 
-  Transport* getTransport(Transports arg)
+  Transport& getTransport(Transports arg)
   {
     return transports[arg];
   }
 
-  Transport* getTransport(int arg)
+  Transport& getTransport(int arg)
   {
     return transports[arg];
   }

@@ -1,6 +1,7 @@
 #ifndef REGION_H
 #define REGION_H
 #include <QString>
+#include <QDebug>
 
 namespace region
 {
@@ -18,10 +19,21 @@ enum Regions
 class Region
 {
 public:
-  virtual QString getName() = 0;
-  virtual int getRegionRadius() = 0;
+  virtual QString getName()
+  {
+    return "-";
+  }
+  virtual int getRegionRadius()
+  {
+    return -1;
+  }
   virtual ~Region()
   {
+  }
+
+  virtual bool isValid()
+  {
+    return false;
   }
 };
 
@@ -42,6 +54,11 @@ public:
   ~Asia()
   {
   }
+
+  virtual bool isValid()
+  {
+    return true;
+  }
 };
 
 class Africa : public Region
@@ -60,6 +77,11 @@ public:
   }
   ~Africa()
   {
+  }
+
+  virtual bool isValid()
+  {
+    return true;
   }
 };
 
@@ -80,6 +102,11 @@ public:
   ~Australia()
   {
   }
+
+  virtual bool isValid()
+  {
+    return true;
+  }
 };
 
 class Europe : public Region
@@ -98,6 +125,11 @@ public:
   }
   ~Europe()
   {
+  }
+
+  virtual bool isValid()
+  {
+    return true;
   }
 };
 
@@ -118,6 +150,11 @@ public:
   ~SouthAmerica()
   {
   }
+
+  virtual bool isValid()
+  {
+    return true;
+  }
 };
 
 class NorthAmerica : public Region
@@ -137,37 +174,41 @@ public:
   ~NorthAmerica()
   {
   }
+
+  virtual bool isValid()
+  {
+    return true;
+  }
 };
 
 class RegionSetter
 {
-  Region* regions[7];
+  Region regions[7];
 
 public:
   RegionSetter()
   {
-    regions[Regions::AFRICA] = new Africa();
-    regions[Regions::ASIA] = new Asia();
-    regions[Regions::AUSTRALIA] = new Australia();
-    regions[Regions::EUROPE] = new Europe();
-    regions[Regions::NORTH_AMERICA] = new NorthAmerica();
-    regions[Regions::SOUTH_AMERICA] = new SouthAmerica();
-    regions[Regions::NULL_] = nullptr;
+    regions[Regions::AFRICA] = Africa();
+    regions[Regions::ASIA] = Asia();
+    regions[Regions::AUSTRALIA] = Australia();
+    regions[Regions::EUROPE] = Europe();
+    regions[Regions::NORTH_AMERICA] = NorthAmerica();
+    regions[Regions::SOUTH_AMERICA] = SouthAmerica();
+    // regions[Regions::NULL_] = Region();
+    // it's already had been initialized as Region(), but just for...
   }
 
-  Region* getRegion(Regions arg)
+  Region& getRegion(Regions arg)
   {
     return regions[arg];
   }
-  Region* getRegion(int arg)
+  Region& getRegion(int arg)
   {
     return regions[arg];
   }
 
   ~RegionSetter()
   {
-    for (int i = 0; i < 7; i++)
-      delete regions[i];
   }
 };
 }

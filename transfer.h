@@ -8,21 +8,18 @@ class Transfer
 {
   transport::TransportSetter trs;
   region::RegionSetter rgs;
-  region::Region* from = nullptr;
-  region::Region* to = nullptr;
-  transport::Transport* transport = nullptr;
+  region::Region from;
+  region::Region to;
+  transport::Transport transport;
 
 public:
   Transfer()
   {
     trs = transport::TransportSetter();
     rgs = region::RegionSetter();
-  };
+  }
   ~Transfer()
   {
-    delete from;
-    delete to;
-    delete transport;
   }
 
   void updateFrom(int arg)
@@ -57,17 +54,22 @@ public:
 
   QString getTransferInf()
   {
-    QString response = "From " + from->getName() + " to " + to->getName() + " by " + transport->getName() +
-                       ". Price: " + QString::number(transport->calculatePrice(from, to));
+    QString response = "From " + from.getName() + " to " + to.getName() + " by " + transport.getName() + ". Price: " +
+                       QString::number(transport.calculatePrice(from, to));
     return response;
+  }
+
+  bool isDataValid(transport::Transport& transport, region::Region& from, region::Region& to)
+  {
+    return transport.isValid() && from.isValid() && to.isValid();
   }
 
   int getPrice()
   {
-    qDebug() << transport << " " << from << " " << to;
-    if (transport && from && to)
+    // qDebug() << transport.getName() << " " << from.getName() << " " << to.getName();
+    if (this->isDataValid(transport, from, to))
     {
-      return transport->calculatePrice(from, to);
+      return transport.calculatePrice(from, to);
     }
     return 0;
   }
