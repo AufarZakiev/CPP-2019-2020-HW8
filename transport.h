@@ -2,19 +2,12 @@
 #define TRANSPORT_H
 #include <region.h>
 
-namespace transport
-{
-enum Transports
-{
-  NULL_ = 0,
-  SEA = 1,
-  GROUND = 2,
-  AIR = 3
-};
+namespace transport {
+enum Transports { NULL_ = 0, SEA = 1, GROUND = 2, AIR = 3 };
 
-class Transport
-{
+class Transport {
 public:
+<<<<<<< HEAD
   virtual QString getName()
   {
     return "-";
@@ -32,11 +25,16 @@ public:
   {
     return false;
   }
+=======
+  virtual QString getName() = 0;
+  virtual int calculatePrice(region::Region *from, region::Region *to) = 0;
+  virtual ~Transport() {}
+>>>>>>> 02db93341ff37e9ac16ec4a631b6c4b26cc1e686
 };
 
-class Sea : public Transport
-{
+class Sea : public Transport {
 public:
+<<<<<<< HEAD
   QString getName()
   {
     return QString::fromStdString("Sea");
@@ -45,6 +43,11 @@ public:
   {
     qDebug() << this->getName() << " " << from.getName() << " " << to.getName();
     return (from.getRegionRadius() + to.getRegionRadius()) * 2;
+=======
+  QString getName() { return QString::fromStdString("Sea"); }
+  virtual int calculatePrice(region::Region *from, region::Region *to) {
+    return (from->getRegionRadius() + to->getRegionRadius()) * 2;
+>>>>>>> 02db93341ff37e9ac16ec4a631b6c4b26cc1e686
   }
   ~Sea() = default;
 
@@ -53,9 +56,9 @@ public:
     return true;
   }
 };
-class Ground : public Transport
-{
+class Ground : public Transport {
 public:
+<<<<<<< HEAD
   QString getName()
   {
     return QString::fromStdString("Ground");
@@ -64,6 +67,11 @@ public:
   {
     qDebug() << this->getName() << " " << from.getName() << " " << to.getName();
     return (from.getRegionRadius() + to.getRegionRadius()) * 3;
+=======
+  QString getName() { return QString::fromStdString("Ground"); }
+  virtual int calculatePrice(region::Region *from, region::Region *to) {
+    return (from->getRegionRadius() + to->getRegionRadius()) * 3;
+>>>>>>> 02db93341ff37e9ac16ec4a631b6c4b26cc1e686
   }
   ~Ground() = default;
 
@@ -72,9 +80,9 @@ public:
     return true;
   }
 };
-class Air : public Transport
-{
+class Air : public Transport {
 public:
+<<<<<<< HEAD
   QString getName()
   {
     return QString::fromStdString("Air");
@@ -83,6 +91,11 @@ public:
   {
     qDebug() << this->getName() << " " << from.getName() << " " << to.getName();
     return (from.getRegionRadius() + to.getRegionRadius()) * 4;
+=======
+  QString getName() { return QString::fromStdString("Air"); }
+  virtual int calculatePrice(region::Region *from, region::Region *to) {
+    return (from->getRegionRadius() + to->getRegionRadius()) * 4;
+>>>>>>> 02db93341ff37e9ac16ec4a631b6c4b26cc1e686
   }
   ~Air() = default;
 
@@ -92,6 +105,7 @@ public:
   }
 };
 
+<<<<<<< HEAD
 class TransportSetter
 {
   Transport transports[4];
@@ -121,7 +135,29 @@ public:
   {
     return transports[arg];
   }
+=======
+class TransportSetter {
+  Transport *transports[4];
+
+public:
+  TransportSetter() {
+    transports[Transports::NULL_] = nullptr;
+    transports[Transports::AIR] = new Air();
+    transports[Transports::SEA] = new Sea();
+    transports[Transports::GROUND] = new Ground();
+  }
+
+  ~TransportSetter() {
+    for (int i = 0; i < 4; i++) {
+      delete transports[i];
+    }
+  }
+
+  Transport *getTransport(Transports arg) { return transports[arg]; }
+
+  Transport *getTransport(int arg) { return transports[arg]; }
+>>>>>>> 02db93341ff37e9ac16ec4a631b6c4b26cc1e686
 };
 }
 
-#endif  // TRANSPORT_H
+#endif // TRANSPORT_H
