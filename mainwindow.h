@@ -2,19 +2,21 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <transfer.h>
+#include <NewTransfer.h>
 QT_BEGIN_NAMESPACE
-namespace Ui {
+namespace Ui
+{
 class MainWindow;
 }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow {
-  Transfer *trf;
+class MainWindow : public QMainWindow
+{
+  NewTransfer tra;
   Q_OBJECT
 
 public:
-  MainWindow(QWidget *parent = nullptr);
+  MainWindow(QWidget* parent = nullptr);
   ~MainWindow();
 
 private slots:
@@ -28,6 +30,6 @@ private slots:
   void on_PricePushButton_clicked();
 
 private:
-  Ui::MainWindow *ui;
+  Ui::MainWindow* ui;
 };
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H

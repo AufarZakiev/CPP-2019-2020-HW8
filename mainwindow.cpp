@@ -4,29 +4,35 @@
 #include <QString>
 #include <qstring.h>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow) {
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+{
   ui->setupUi(this);
-  trf = new Transfer();
 }
 
-MainWindow::~MainWindow() { delete ui; }
+MainWindow::~MainWindow()
+{
+  delete ui;
+}
 
-void MainWindow::on_FromComboBox_currentIndexChanged(int index) {
+void MainWindow::on_FromComboBox_currentIndexChanged(int index)
+{
   qDebug() << index;
-  trf->updateFrom(index);
+  tra.setFrom(index);
 }
 
-void MainWindow::on_TransportComboBox_currentIndexChanged(int index) {
+void MainWindow::on_TransportComboBox_currentIndexChanged(int index)
+{
   qDebug() << index;
-  trf->updateTransport(index);
+  tra.setTransport(index);
 }
 
-void MainWindow::on_ToComboBox_currentIndexChanged(int index) {
+void MainWindow::on_ToComboBox_currentIndexChanged(int index)
+{
   qDebug() << index;
-  trf->updateTo(index);
+  tra.setTo(index);
 }
 
-void MainWindow::on_PricePushButton_clicked() {
-  ui->PriceLabel->setNum(trf->getPrice());
+void MainWindow::on_PricePushButton_clicked()
+{
+  ui->PriceLabel->setNum(tra.getPrice());
 }
